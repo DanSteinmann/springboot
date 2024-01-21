@@ -20,6 +20,10 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    public void destroy(Long id) {
+        bookRepository.deleteById(id);
+    }
+
     public Optional<Book> getOne(Long id) {
         return bookRepository.findById(id);
     }

@@ -35,6 +35,12 @@ public class BookController {
         }
     }
 
+    @DeleteMapping(value = "{id}")
+    public Book destroy(@PathVariable Long id) {
+        bookService.destroy(id);
+        return null;
+    }
+
     @GetMapping(value = "", produces = "application/json")
     public List<Book> getAll() {
         return bookService.getAll();
