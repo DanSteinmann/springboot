@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -21,4 +23,7 @@ public class Capital {
     @OneToOne(mappedBy = "capital")
     @JsonIgnore
     private Country country;
+
+    @OneToMany(mappedBy = "capital")
+    private List<Street> streets;
 }

@@ -17,6 +17,8 @@ public class CountryController {
 
     private final CountryService countryService;
 
+    //Request:
+    //http://localhost:8082/country?capitalName=Bern
     @GetMapping(value = "", produces = "application/json")
     public List<Country> getAll(@RequestParam String capitalName, @RequestParam(required = false) Boolean useSql) {
         if(useSql != null && useSql) {
