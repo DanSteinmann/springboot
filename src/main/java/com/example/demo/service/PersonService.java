@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 @Transactional
@@ -22,6 +24,9 @@ public class PersonService {
         return personRepository.save(person);
     }
 
+    public Optional<Person> getOne(Long id) {
+        return personRepository.findById(id);
+    }
 
     public Person addAddress(Long personId, Address address) {
         Person person = personRepository.findById(personId)
