@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,5 +26,5 @@ public class Capital {
     private Country country;
 
     @OneToMany(mappedBy = "capital")
-    private List<Street> streets;
+    private List<Street> streets  = new ArrayList<>();;
 }
