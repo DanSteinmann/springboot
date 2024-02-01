@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Country;
 import com.example.demo.service.CountryService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,11 @@ public class CountryController {
         } else {
             return countryService.getCountriesByCapitalNameJpa(capitalName);
         }
+    }
+
+    @PostMapping(value = "", consumes =  "application/json", produces = "application/json")
+    public Country create(@RequestBody Country country) {
+        return countryService.create(country);
     }
 
 }
