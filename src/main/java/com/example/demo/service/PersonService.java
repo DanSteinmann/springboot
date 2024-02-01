@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -34,6 +35,16 @@ public class PersonService {
 
         address.setPerson(person);
         addressRepository.save(address);
+        return personRepository.save(person);
+    }
+
+    public Person addAdresses(Long personId, List<Address> addresses){
+        Person person = personRepository.findById(personId)
+                .orElseThrow(() -> new EntityNotFoundException("Person not found"));
+        for (Address address : addresses) {
+            address.setPerson(person);
+            addressRepository.save(address);
+        }
         return personRepository.save(person);
     }
 }

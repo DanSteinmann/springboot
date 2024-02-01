@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -25,6 +26,11 @@ public class PersonController {
     @PutMapping(value = "{id}/address", consumes =  "application/json", produces = "application/json")
     public Person addAddress(@PathVariable Long id, @RequestBody Address address){
         return personService.addAddress(id, address);
+    }
+
+    @PutMapping(value = "{id}/addresses", consumes =  "application/json", produces = "application/json")
+    public Person addAddresses(@PathVariable Long id, @RequestBody List<Address> addresses){
+        return personService.addAdresses(id, addresses);
     }
 
     @GetMapping(value = "{id}", produces = "application/json")
